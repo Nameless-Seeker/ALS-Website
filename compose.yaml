@@ -1,0 +1,13 @@
+services:
+  backend:
+    image: srijansarkar/als-backend-cpu-only:v1
+    environment:
+      - PIPER_URL=http://localhost:5111/v1/synthesize
+      - PIPER_HEALTH_URL=http://localhost:5111/health
+
+  frontend:
+    image: srijansarkar/als-website:v1
+    ports:
+      - "5000:80"
+    depends_on:
+      - backend
